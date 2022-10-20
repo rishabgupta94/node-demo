@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const Joi = require('joi');
 const morgan = require('morgan');
 const config = require('config');
+const debug = require('debug')('app:startup');
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(helmet());
 
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
-    console.log('Morgan enabled...');
+    debug('Morgan enabled...');
 }
 
 console.log('Application Name', config.get('name'));
